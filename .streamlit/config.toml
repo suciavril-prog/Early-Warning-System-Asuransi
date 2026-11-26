@@ -1,0 +1,28 @@
+[theme]
+base = "light"
+primaryColor = "#1f6fb2"
+backgroundColor = "#f5faff"
+secondaryBackgroundColor = "#e6f1fb"
+textColor = "#14324d"
+linkColor = "#1f6fb2"
+borderColor = "#cfe3f5"
+showWidgetBorder = true
+baseRadius = "0.75rem"
+font = "'Plus Jakarta Sans', 'Segoe UI', sans-serif"
+headingFont = "'Plus Jakarta Sans', 'Segoe UI', sans-serif"
+chartCategoricalColors = ["#1f6fb2", "#e08a2e", "#5aa9e6", "#2e7d4f", "#8a6bbf"]
+
+[theme.sidebar]
+backgroundColor = "#e3f0fb"
+secondaryBackgroundColor = "#ffffff"
+
+[server]
+headless = true
+maxUploadSize = 20
+enableXsrfProtection = true
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "viewer"
