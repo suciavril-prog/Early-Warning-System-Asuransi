@@ -1,0 +1,32 @@
+CARA MENJALANKAN APLIKASI EWS DI LAPTOP
+=======================================
+
+LANGKAH 1 - Pasang Python (sekali saja)
+  1. Buka https://www.python.org/downloads/ lalu klik tombol "Download Python".
+  2. Jalankan berkas instalasinya.
+  3. PENTING: centang kotak "Add python.exe to PATH" di layar pertama,
+     lalu klik "Install Now".
+
+LANGKAH 2 - Ekstrak folder aplikasi
+  Klik kanan berkas ews_app_lps_sbm_itb.zip > "Extract All..." > Extract.
+  (Jangan menjalankan aplikasi langsung dari dalam zip.)
+
+LANGKAH 3 - Jalankan
+  Windows : buka folder ews_app, klik dua kali JALANKAN_WINDOWS.bat
+  Mac     : buka folder ews_app, klik kanan JALANKAN_MAC.command > Open
+
+  Jendela hitam akan muncul. Pertama kali, tunggu 2-5 menit selama komponen
+  dipasang (perlu internet). Browser lalu terbuka di http://localhost:8501.
+  Bila browser belum menampilkan aplikasi, tunggu sebentar lalu tekan F5.
+
+LANGKAH 4 - Berhenti
+  Tutup jendela hitam. Untuk memakai lagi, ulangi Langkah 3 (lebih cepat,
+  tidak perlu memasang ulang).
+
+CATATAN
+  - "localhost" berarti aplikasi hanya berjalan di laptop Anda; orang lain
+    belum bisa membukanya. Agar bisa dibuka tim/LPS lewat alamat web, aplikasi
+    perlu dipasang di server oleh admin TI (lihat docs/DEPLOY.md).
+  - Windows mungkin menampilkan peringatan "Windows protected your PC".
+    Klik "More info" > "Run anyway". Ini wajar untuk berkas .bat buatan sendiri.
+  - Tanpa login, jangan unggah data perusahaan bernama.

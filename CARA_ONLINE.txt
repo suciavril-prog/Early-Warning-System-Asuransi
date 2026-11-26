@@ -1,0 +1,68 @@
+CARA MEMBUAT EWS ASURANSI PUNYA ALAMAT WEB SENDIRI
+(gratis, lewat Streamlit Community Cloud, tanpa mengetik perintah)
+
+Hasil akhirnya: alamat seperti https://ews-asuransi-lps.streamlit.app
+yang bisa dibuka siapa pun dari laptop atau ponsel, dengan login.
+
+Waktu yang dibutuhkan: sekitar 20-30 menit, cukup sekali.
+
+------------------------------------------------------------
+LANGKAH 1. Buat akun GitHub (tempat menyimpan berkas aplikasi)
+------------------------------------------------------------
+1. Buka https://github.com/signup lalu daftar dengan email Anda.
+2. Setelah masuk, klik tombol "+" di kanan atas, pilih "New repository".
+3. Repository name: ews-asuransi
+4. Pilih "Private" (supaya berkas tidak bisa dilihat orang lain).
+5. Klik "Create repository".
+
+------------------------------------------------------------
+LANGKAH 2. Unggah berkas aplikasi ke GitHub
+------------------------------------------------------------
+1. Ekstrak berkas zip yang dikirim Claude. Buka folder "ews_app".
+2. Mac saja: tekan Command + Shift + titik (.) agar folder ".streamlit"
+   terlihat. Folder ini berisi warna tema biru muda.
+3. Di halaman repository GitHub, klik tautan "uploading an existing file".
+4. Pilih SEMUA isi folder ews_app (Ctrl+A atau Command+A), lalu seret
+   ke halaman GitHub. Pastikan app.py, requirements.txt, dan folder
+   .streamlit, ews, halaman, data, config, assets ikut terunggah.
+   Jangan seret folder ews_app-nya sendiri, tetapi ISI-nya.
+5. Tunggu hingga semua berkas muncul, lalu klik "Commit changes".
+
+------------------------------------------------------------
+LANGKAH 3. Terbitkan di Streamlit Community Cloud
+------------------------------------------------------------
+1. Buka https://share.streamlit.io lalu pilih "Continue with GitHub".
+   Izinkan Streamlit mengakses repository Anda (termasuk yang private).
+2. Klik "Create app", lalu pilih "Deploy a public app from GitHub".
+3. Isi:
+   - Repository : <nama-akun-anda>/ews-asuransi
+   - Branch     : main
+   - Main file path : app.py
+   - App URL    : misalnya ews-asuransi-lps (alamat akan menjadi
+                  https://ews-asuransi-lps.streamlit.app)
+4. Klik "Advanced settings":
+   - Python version: 3.12
+   - Secrets: tempel SELURUH isi berkas ISI_SECRETS_STREAMLIT.txt
+     (dikirim Claude terpisah). Ini mengaktifkan login.
+5. Klik "Save", lalu "Deploy". Tunggu 2-5 menit sampai aplikasi tampil.
+
+------------------------------------------------------------
+LANGKAH 4. Masuk dan bagikan
+------------------------------------------------------------
+- Nama pengguna: admin
+- Kata sandi: lihat pesan Claude (tidak ditulis di berkas ini).
+- Bagikan alamat web kepada tim. Kata sandi berikan secara terpisah.
+
+------------------------------------------------------------
+PERLU DIKETAHUI
+------------------------------------------------------------
+- Bila lama tidak dibuka, aplikasi "tertidur". Klik tombol
+  "Yes, get this app back up" dan tunggu sekitar satu menit.
+- Berkas yang diunggah di halaman Daftar pantauan diproses di server
+  Streamlit (luar negeri). Jangan unggah data entitas bernama milik LPS
+  ke versi ini. Untuk data bernama, pasang aplikasi di server LPS atau
+  ITB (lihat docs/DEPLOY.md).
+- Untuk mengubah isi aplikasi: ganti berkas di GitHub (klik berkas,
+  ikon pensil, "Commit changes"). Aplikasi diperbarui otomatis.
+- Untuk menambah pengguna: minta bantuan Claude membuat baris login baru,
+  lalu tempel di Settings > Secrets aplikasi di share.streamlit.io.

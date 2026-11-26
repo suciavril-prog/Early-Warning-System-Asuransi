@@ -1,0 +1,30 @@
+{
+  "versi": "B2-2026-10",
+  "sumber": "Laporan Kemajuan Penelitian LPS-SBM ITB, Oktober 2026, Tabel 6.17",
+  "model": "Discrete-time hazard (Firth logit, galat baku terklaster per perusahaan), outcome onset D2, prediktor t-1",
+  "periode_estimasi": "2016-2025, asuransi langsung (891 firm-year, 57 kejadian, 142 perusahaan)",
+  "satuan_aset_ln": "juta rupiah (ASUMSI, belum dikonfirmasi dengan berkas data panel)",
+  "koefisien": {
+    "intersep": -1.3496,
+    "ekuitas_aset": -0.0019,
+    "roa": -0.0435,
+    "rasio_klaim": 0.0169,
+    "pertumbuhan_premi_per10": -0.0167,
+    "ln_aset": -0.2242,
+    "jiwa": 1.4272
+  },
+  "ambang_alarm": 0.173,
+  "ekuitas_minimum_miliar": {
+    "konvensional": 250,
+    "syariah": 100,
+    "dasar": "POJK 23/2023, tahap pertama, wajib dipenuhi akhir 2026"
+  },
+  "median_referensi": {
+    "catatan": "Tabel 6.2 (median sampel); pertumbuhan premi = median kelompok non-onset Tabel 6.4",
+    "ekuitas_aset": 33.9,
+    "roa": 1.9,
+    "rasio_klaim": 64.2,
+    "pertumbuhan_premi": 8.0,
+    "ln_aset": 14.14
+  }
+}
