@@ -8,7 +8,7 @@ auc = muat_hasil("auc")
 kunci = muat_hasil("angka_kunci").set_index("kode")["nilai"]
 a = auc.set_index("indikator")
 
-kepala("Indikator peringatan dini", label="Hasil penelitian")
+kepala("Indikator peringatan dini", label="Model penelitian kami")
 kiri, kanan = st.columns([1.2, 1])
 with kiri:
     st.subheader("Daya pembeda tiap indikator")

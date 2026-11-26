@@ -15,7 +15,7 @@ b2, b0 = kin.loc["B2 EWS keuangan · hazard"], kin.loc["B0 modal saja · hazard"
 kepala("Ringkasan temuan",
        f"Model EWS (B2) memprediksi awal <i>financial distress</i> (D2) pada tahun t dari laporan t−1. "
        f"Rasio klaim adalah sinyal dini paling kuat, sedangkan RBC univariat hanya ber-AUC "
-       f"<b>{fmt(auc.loc['RBC dilaporkan (%)', 'auc_d2'], 3)}</b>.", label="Hasil penelitian")
+       f"<b>{fmt(auc.loc['RBC dilaporkan (%)', 'auc_d2'], 3)}</b>.", label="Model penelitian kami")
 kartu_angka([
     dict(label="AUC data uji 2023–2025", nilai=fmt(b2["auc"], 3), nada="utama",
          konteks=f"model EWS (B2); modal saja (B0) {fmt(b0['auc'], 3)}. Brier {fmt(b2['brier'], 3)}"),

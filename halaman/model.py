@@ -11,7 +11,7 @@ kin = muat_hasil("kinerja")
 hip = muat_hasil("hipotesis")
 kunci = muat_hasil("angka_kunci").set_index("kode")["nilai"]
 
-kepala("Model dan validasi", label="Hasil penelitian")
+kepala("Model dan validasi", label="Model penelitian kami")
 kiri, kanan = st.columns([1.2, 1])
 with kiri:
     st.subheader("Kinerja out-of-sample")

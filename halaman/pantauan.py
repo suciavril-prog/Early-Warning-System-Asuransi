@@ -11,7 +11,7 @@ from ews.ui import fmt, pct, pill, kaki, kepala
 
 cfg = muat_konfigurasi()
 
-kepala("Daftar pantauan", label="Alat skor")
+kepala("Nilai banyak perusahaan dari Excel", label="Coba dan bandingkan")
 st.caption("Unggah rasio Laporan Publikasi banyak entitas sekaligus. Berkas diolah di memori sesi Anda dan tidak "
            "disimpan oleh aplikasi. Saat dibuka pertama kali, tabel berisi sepuluh entitas ilustratif, bukan "
            "perusahaan nyata.")

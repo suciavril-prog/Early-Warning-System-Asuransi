@@ -27,7 +27,7 @@ def terapkan(nama: str) -> None:
 if "sim_rasio_klaim" not in st.session_state:
     terapkan("Median jiwa konvensional")
 
-kepala("Simulator entitas", label="Alat skor")
+kepala("Simulator model EWS", label="Coba dan bandingkan")
 st.caption("Isi rasio dari Laporan Publikasi tahun buku terakhir (t−1). Contoh berasal dari median segmen "
            "(Tabel 6.1) atau hipotetis, bukan entitas nyata.")
 

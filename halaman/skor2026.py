@@ -9,7 +9,7 @@ seg = muat_hasil("skor2026_segmen")
 kunci = muat_hasil("angka_kunci").set_index("kode")["nilai"]
 tot = seg.set_index("segmen").loc["Total"]
 
-kepala("Skor risiko 2026", label="Hasil penelitian")
+kepala("Skor risiko 2026", label="Model penelitian kami")
 st.markdown("Model B2 diterapkan pada laporan tahun buku 2025. Realisasi dibandingkan dengan data YTD September 2026, "
             "sehingga hasil ini masih sementara.")
 kartu_angka([

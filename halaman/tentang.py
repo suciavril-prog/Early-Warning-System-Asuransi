@@ -13,7 +13,7 @@ kepala("Apa itu Early Warning System?",
        "Early Warning System (EWS) atau sistem peringatan dini adalah seperangkat indikator dan model statistik "
        "yang memantau kondisi keuangan perusahaan secara berkala, lalu memberi sinyal ketika risikonya mulai "
        "memburuk. Tujuannya agar masalah terlihat <b>sebelum</b> menjadi kegagalan, sehingga masih ada waktu "
-       "untuk bertindak.", label="Mulai di sini")
+       "untuk bertindak.", label="Belajar")
 
 st.subheader("Tiga cara sederhana memahaminya")
 a, b, c = st.columns(3)
@@ -115,6 +115,6 @@ langkah([
 ], bernomor=False)
 
 a, b, _ = st.columns([1, 1, 2])
-a.page_link("halaman/ringkasan.py", label="Lanjut ke Ringkasan temuan", icon=":material/arrow_forward:")
-b.page_link("halaman/simulator.py", label="Coba sendiri di Simulator", icon=":material/tune:")
+a.page_link("halaman/metode_penilaian.py", label="Lanjut: kenali metode penilaian", icon=":material/arrow_forward:")
+b.page_link("halaman/bandingkan.py", label="Coba bandingkan metode", icon=":material/compare_arrows:")
 kaki()

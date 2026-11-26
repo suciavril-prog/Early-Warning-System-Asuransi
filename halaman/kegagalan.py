@@ -7,7 +7,7 @@ from ews.ui import sumber, kaki, kepala
 prof = muat_hasil("profil_waktu").sort_values("k")
 kasus = muat_hasil("kasus_gagal")
 
-kepala("Kasus kegagalan", label="Hasil penelitian")
+kepala("Kasus kegagalan", label="Model penelitian kami")
 st.markdown("ROA dan rasio klaim sudah memburuk pada k = −3, sekitar satu tahun sebelum ekuitas runtuh pada k = −2. "
             "Jendela ini memberi peringatan dua hingga tiga tahun sebelum tindakan OJK.")
 c = st.columns(3)

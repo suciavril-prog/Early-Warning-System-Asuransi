@@ -1,66 +1,58 @@
 import streamlit as st
 
-from ews import charts
 from ews.data import muat_hasil
-from ews.ui import fmt, kaki, kartu_angka, kepala, kotak, sumber
+from ews.ui import fmt, kaki, kepala, kotak
 
-kunci = muat_hasil("angka_kunci").set_index("kode")["nilai"]
 kin = muat_hasil("kinerja").set_index("model")
-seg26 = muat_hasil("skor2026_segmen").set_index("segmen")
+kunci = muat_hasil("angka_kunci").set_index("kode")["nilai"]
 b2, b0 = kin.loc["B2 EWS keuangan · hazard"], kin.loc["B0 modal saja · hazard"]
 
-kepala("Kenali perusahaan asuransi berisiko sebelum terlambat",
-       "Sistem peringatan dini ini memperkirakan peluang sebuah perusahaan asuransi <b>mulai mengalami financial "
-       "distress tahun depan</b>, hanya dari laporan keuangan yang dipublikasikan. Hasilnya berupa peluang, "
-       "bukan vonis.", label="Early Warning System · prototipe penelitian LPS–SBM ITB", hero=True)
+kepala("Kenali risiko keuangan sebelum menjadi distress",
+       "Pusat belajar interaktif tentang Early Warning System (EWS) untuk perusahaan asuransi. Pelajari konsepnya, "
+       "kenali berbagai metode penilaian, coba menilai perusahaan, lalu bandingkan hasilnya.",
+       label="Pelajari · Nilai · Bandingkan · Pahami", hero=True)
 
-a, b, c, _ = st.columns([1, 1, 1, 1.2])
-a.page_link("halaman/tentang.py", label="Apa itu EWS?", icon=":material/school:")
-b.page_link("halaman/simulator.py", label="Coba simulator", icon=":material/tune:")
-c.page_link("halaman/skor2026.py", label="Lihat skor 2026", icon=":material/leaderboard:")
-
-st.subheader("Empat angka terpenting")
-kartu_angka([
-    dict(label="Perusahaan beralarm 2026", nilai=fmt(seg26.loc["Total", "alarm"], 0), nada="kritis",
-         konteks=f"dari {fmt(seg26.loc['Total', 'perusahaan'], 0)} perusahaan; seluruhnya asuransi jiwa. "
-                 "Hasil sementara."),
-    dict(label="Ketepatan model EWS (AUC)", nilai=fmt(b2["auc"], 3), nada="utama",
-         konteks=f"dibanding {fmt(b0['auc'], 3)} untuk model modal saja, pada data uji 2023–2025"),
-    dict(label="Awal financial distress", nilai=fmt(kunci["onset"], 0), nada="waspada",
-         konteks=f"kejadian dari {fmt(kunci['risk_set'], 0)} firm-year berisiko, 2016–2025"),
-    dict(label="Kegagalan terkait keuangan", nilai=fmt(kunci["gagal"], 0), nada="netral",
-         konteks="pencabutan izin usaha dalam periode observasi"),
-])
-
-st.subheader("Apa yang bisa Anda lakukan di sini")
-k = st.columns(3)
-kartu = [
-    ("Memahami EWS", "Pengertian, analogi sederhana, definisi distress, dan cara membaca hasil model.",
-     "halaman/tentang.py", "Buka Tentang EWS", ":material/school:"),
-    ("Menilai satu perusahaan", "Isi enam rasio dari Laporan Publikasi, lalu lihat peluang, status, dan "
-     "faktor pendorongnya.", "halaman/simulator.py", "Buka Simulator", ":material/tune:"),
-    ("Menilai banyak perusahaan", "Unggah berkas CSV atau Excel dan dapatkan daftar pantauan yang bisa diunduh.",
-     "halaman/pantauan.py", "Buka Daftar pantauan", ":material/table_view:"),
+PINTU = [
+    ("1", "Mengenal EWS", "Apa itu EWS, apa itu financial distress, dan mengapa asuransi di Indonesia "
+                          "membutuhkannya.", "halaman/tentang.py", "Mulai belajar", ":material/school:"),
+    ("2", "Kenali metode penilaian", "Dari aturan RBC, penanda sederhana, rasio IRIS, model statistik, sampai "
+                                     "machine learning: kelebihan dan keterbatasannya.",
+     "halaman/metode_penilaian.py", "Lihat metode", ":material/category:"),
+    ("3", "Coba menilai", "Masukkan data satu perusahaan, atau unggah Excel berisi banyak perusahaan, lalu lihat "
+                          "peluang distress-nya.", "halaman/simulator.py", "Coba simulator", ":material/tune:"),
+    ("4", "Bandingkan metode", "Nilai perusahaan yang sama dengan empat metode sekaligus dan lihat mengapa "
+                               "hasilnya bisa berbeda.", "halaman/bandingkan.py", "Bandingkan",
+     ":material/compare_arrows:"),
 ]
-for kol, (judul, teks, hal, lab, ik) in zip(k, kartu):
-    with kol.container(border=True):
-        st.markdown(f"**{judul}**")
-        st.caption(teks)
+kol = st.columns(4)
+for k, (n, judul, teks, hal, lab, ik) in zip(kol, PINTU):
+    with k.container(border=True, height="stretch"):
+        st.markdown(f'<div class="ews-step" style="border:0;padding:0;background:none"><div class="n">{n}</div>'
+                    f'<b>{judul}</b><span>{teks}</span></div>', unsafe_allow_html=True)
         st.page_link(hal, label=lab, icon=ik)
 
-kiri, kanan = st.columns([1.5, 1])
+st.subheader("Model penelitian kami")
+kiri, kanan = st.columns([1.4, 1])
 with kiri:
-    with st.container(border=True):
-        st.markdown("**Tingkat financial distress (D2) per tahun**")
-        st.plotly_chart(charts.tren(muat_hasil("tren"), "d2"), width="stretch")
-        sumber("Tabel 6.3, proporsi firm-year berstatus distress")
+    st.markdown(
+        "Penelitian LPS–SBM ITB mengembangkan model EWS dari laporan keuangan asuransi 2016–2025. Model ini "
+        "memperkirakan peluang perusahaan **mulai** mengalami financial distress tahun depan dari enam indikator: "
+        "rasio klaim, ROA, ekuitas/aset, pertumbuhan premi, ukuran perusahaan, dan lini usaha.")
+    kotak(f"Pada data uji 2023–2025, model ini membedakan perusahaan yang kemudian distress dengan AUC "
+          f"<b>{fmt(b2['auc'], 3)}</b>, lebih baik daripada model yang hanya memakai modal "
+          f"(<b>{fmt(b0['auc'], 3)}</b>). Seluruh {fmt(kunci['onset_rbc'], 0)} awal distress yang memiliki data RBC "
+          f"masih ber-RBC di atas 120% setahun sebelumnya.")
+    a, b = st.columns(2)
+    a.page_link("halaman/ringkasan.py", label="Ringkasan temuan", icon=":material/dashboard:")
+    b.page_link("halaman/model.py", label="Model dan validasi", icon=":material/fact_check:")
 with kanan:
-    st.markdown("**Temuan utama**")
-    kotak(f"<b>RBC saja tidak cukup.</b> Seluruh {fmt(kunci['onset_rbc'], 0)} awal distress yang memiliki data RBC "
-          f"tercatat ber-RBC di atas 120% satu tahun sebelumnya.")
-    kotak("<b>Rasio klaim adalah sinyal dini terkuat.</b> ROA dan rasio klaim memburuk sekitar tiga tahun sebelum "
-          "tindakan OJK, setahun lebih awal dari runtuhnya ekuitas.")
-    kotak("<b>Batas penggunaan.</b> Skor adalah alat penyaring untuk memprioritaskan pemeriksaan, bukan dasar "
-          "sanksi. Definisi distress D2 adalah usulan tim dan belum divalidasi terhadap status pengawasan OJK.",
-          "awas")
+    with st.container(border=True):
+        st.markdown("**Siapa yang cocok memakai aplikasi ini?**")
+        st.markdown("- Mahasiswa dan akademisi yang mempelajari EWS\n"
+                    "- Peserta seminar dan reviewer penelitian\n"
+                    "- Regulator dan praktisi yang ingin mengenal pendekatan penilaian")
+
+kotak("<b>Batas penggunaan.</b> Ini prototipe penelitian. Skor adalah alat penyaring untuk belajar dan "
+      "memprioritaskan pemeriksaan, bukan dasar sanksi. Contoh perusahaan di aplikasi ini adalah rekaan. Jangan "
+      "unggah data perusahaan bernama milik LPS ke versi online.", "awas")
 kaki()
